@@ -1,3 +1,9 @@
+<?php
+session_start();
+include "koneksi.php";
+$db = new database();
+$con = $db->mysqli;
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -17,27 +23,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--//for-mobile-apps-->
 
 	<!-- Custom-Theme-Files -->
-    <!-- Bootstrap-CSS --> 			<link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- JQuery --> 				<script src="js/jquery.min.js"></script>
-    <!-- Bootstrap-Main --> 		<script src="js/bootstrap.min.js">		</script>
-    <!-- Index-Page-Styling --> 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <!-- Bootstrap-CSS --> 			<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- JQuery --> 				<script src="assets/js/jquery.min.js"></script>
+    <!-- Bootstrap-Main --> 		<script src="assets/js/bootstrap.min.js">		</script>
+    <!-- Index-Page-Styling --> 	<link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all">
 
-	<script type="text/javascript" src="js/tabulous.js"></script>
-	<script type="text/javascript" src="js/flip.js"></script>
+	<script type="text/javascript" src="assets/js/tabulous.js"></script>
+	<script type="text/javascript" src="assets/js/flip.js"></script>
 
-	<!-- Gallery effect CSS --> <link rel="stylesheet" href="css/swipebox.css">
+	<!-- Gallery effect CSS --> <link rel="stylesheet" href="assets/css/swipebox.css">
 
 	<!--JS for animate-->
-	<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
-	<script src="js/wow.min.js"></script>
+	<link href="assets/css/animate.css" rel="stylesheet" type="text/css" media="all">
+	<script src="assets/js/wow.min.js"></script>
 		<script>
 			new WOW().init();
 		</script>
 	<!--//end-animate-->
 
 	<!--startsmothscrolling-->
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="assets/js/move-top.js"></script>
+	<script type="text/javascript" src="assets/js/easing.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){
@@ -53,7 +59,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 
 <!-- Header Starts -->
-<script src="js/jquery.vide.min.js"></script>
+<!-- <script src="assets/js/jquery.vide.min.js"></script> -->
 <div class="head-menu">
 	<div class="header" data-vide-bg="video/park" id="home">
 		<div class="menu-w3l">
@@ -65,19 +71,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand logo" href="#"><img src="./images/logo.png" alt="logo image"></a>
+						<a class="navbar-brand logo" href="#"><img src="./assets/images/logo.png" alt="logo image"></a>
 					</div>
 
 					<div class="collapse navbar-collapse " id="myNavbar">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="active"><a href="#home" class="scroll wow fadeInRight" data-wow-delay=".3s">Beranda</a></li>
-							<li><a href="#about" class="scroll wow fadeInRight" data-wow-delay="0.7s">About Us</a></li>
-							<li><a href="#timing" class="scroll wow fadeInRight" data-wow-delay="1.1s">Timings</a></li>
-							<li><a href="#facilities" class="scroll wow fadeInRight" data-wow-delay="1.4s">Facilities</a></li>
-							<li><a href="#price" class="scroll wow fadeInRight" data-wow-delay="1.7s">Ticket Price</a></li>
-							<li><a href="#gallery" class="scroll wow fadeInRight" data-wow-delay="2.1s">Gallery</a></li>
-							<li><a href="#booking" class="scroll wow fadeInRight" data-wow-delay="2.4s">Pemesanan Online</a></li>
-							<li><a href="#contact" class="scroll wow fadeInRight" data-wow-delay="2.8s">Contact</a></li>
+							<li class="active"><a href="#home" class="scroll wow fadeInRight" data-wow-delay=".1s">Beranda</a></li>
+							<li><a href="#about" class="scroll wow fadeInRight" data-wow-delay="0.3s">About Us</a></li>
+							<li><a href="#timing" class="scroll wow fadeInRight" data-wow-delay="0.5s">Timings</a></li>
+							<li><a href="#facilities" class="scroll wow fadeInRight" data-wow-delay="0.7s">Facilities</a></li>
+							<li><a href="#price" class="scroll wow fadeInRight" data-wow-delay="0.9s">Ticket Price</a></li>
+							<li><a href="#gallery" class="scroll wow fadeInRight" data-wow-delay="1.1s">Gallery</a></li>
+							<li><a href="#booking" class="scroll wow fadeInRight" data-wow-delay="1.3s">Pemesanan Online</a></li>
+							<?php
+								echo'<li><a href="costumer/" class="wow fadeInRight" data-wow-delay="1.5s">Halamanku</a></li>';
+							?>
 						</ul>
 					</div>
 				</div>
@@ -94,12 +102,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<h1> Tentang Mangkujo </h1>
 			<div class="col-md-6 about-img">
 				<div class="w3l-img1">
-					<img src="./images/about-img2.jpg" alt="logo">
+					<img src="./assets/images/about-img2.jpg" alt="logo">
 						<div class="w3l-img2">
-							<img src="./images/2.jpg" alt="logo">
+							<img src="./assets/images/2.jpg" alt="logo">
 						</div>
 						<div class="w3l-img3">
-							<img src="./images/1.jpg" alt="logo">
+							<img src="./assets/images/1.jpg" alt="logo">
 						</div>
 				</div>
 			</div>
@@ -255,8 +263,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="filtr-container">
 					<div class="col-md-4 filtr-item g-width" data-category="1, 4" data-sort="01">
 						<div class="hover ehover14">
-							<a href="images/g10.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
-								<img src="images/g10.jpg" alt="" class="img-responsive" />
+							<a href="assets/images/g10.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
+								<img src="assets/images/g10.jpg" alt="" class="img-responsive" />
 								<div class="overlay">
 									<h4>Portfolio</h4>
 									<div class="info nullbutton button" data-toggle="modal" data-target="#modal14">Show More</div>
@@ -266,8 +274,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-md-4 filtr-item g-width" data-category="2, 3" data-sort="02">
 						<div class="hover ehover14">
-							<a href="images/g11.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
-								<img src="images/g11.jpg" alt="" class="img-responsive" />
+							<a href="assets/images/g11.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
+								<img src="assets/images/g11.jpg" alt="" class="img-responsive" />
 								<div class="overlay">
 									<h4>Portfolio</h4>
 									<div class="info nullbutton button" data-toggle="modal" data-target="#modal14">Show More</div>
@@ -277,8 +285,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-md-4 filtr-item g-width" data-category="1, 4" data-sort="03">
 						<div class="hover ehover14">
-							<a href="images/g12.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
-								<img src="images/g12.jpg" alt="" class="img-responsive" />
+							<a href="assets/images/g12.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
+								<img src="assets/images/g12.jpg" alt="" class="img-responsive" />
 								<div class="overlay">
 									<h4>Portfolio</h4>
 									<div class="info nullbutton button" data-toggle="modal" data-target="#modal14">Show More</div>
@@ -288,8 +296,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-md-4 filtr-item g-width" data-category="3, 4" data-sort="04">
 						<div class="hover ehover14">
-							<a href="images/g16.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
-								<img src="images/g16.jpg" alt="" class="img-responsive" />
+							<a href="assets/images/g16.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
+								<img src="assets/images/g16.jpg" alt="" class="img-responsive" />
 								<div class="overlay">
 									<h4>Portfolio</h4>
 									<div class="info nullbutton button" data-toggle="modal" data-target="#modal14">Show More</div>
@@ -299,8 +307,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-md-4 filtr-item g-width" data-category="3" data-sort="05">
 						<div class="hover ehover14">
-							<a href="images/g14.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
-								<img src="images/g14.jpg" alt="" class="img-responsive" />
+							<a href="assets/images/g14.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
+								<img src="assets/images/g14.jpg" alt="" class="img-responsive" />
 								<div class="overlay">
 									<h4>Portfolio</h4>
 									<div class="info nullbutton button" data-toggle="modal" data-target="#modal14">Show More</div>
@@ -310,8 +318,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="col-md-4 filtr-item g-width" data-category="2, 4" data-sort="06">
 						<div class="hover ehover14">
-							<a href="images/g15.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
-								<img src="images/g15.jpg" alt="" class="img-responsive" />
+							<a href="assets/images/g15.jpg" class="swipebox" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus tortor diam, ac lobortis justo rutrum quis. Praesent non purus fermentum, eleifend velit non">
+								<img src="assets/images/g15.jpg" alt="" class="img-responsive" />
 								<div class="overlay">
 									<h4>Portfolio</h4>
 									<div class="info nullbutton button" data-toggle="modal" data-target="#modal14">Show More</div>
@@ -335,61 +343,67 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="main">
 				<div class="facts">
 
-					<form action="#" method="post">
-						<div>
-							<div class="reservation-name">
-							  <h5>Visitor Name </h5>
-								<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
-							</div>
+          <?php
+          if( isset($_SESSION["user"]) ){
+          ?>
+            <form action="act/pesan.php" method="post">
+              <div>
+                <div class="reservation-name">
+                  <h5>Pesan Wahana</h5>
+                  <select class="custom-select" name="pesan_wahana" id="select-4">
+                    <?php
+                        include "model/paket_wahana.php";
+                        $wahanas = PaketWahana::read($con);
+                        foreach ($wahanas as $data) {
+                          echo '<option value="P-'.$data["id"].'">'.$data["nama"].'</option>';
+                        }
+                        include "model/wahana.php";
+                        $wahanas = Wahana::read($con);
+                        foreach ($wahanas as $data) {
+                          echo '<option value="W-'.$data["id"].'">'.$data["nama"].'</option>';
+                        }
 
-							<div class="date-pike">
-							  <h5>Date of Visit </h5>
-								<input class="date" id="datepicker" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd/mm/yyyy';}" required="">
-							</div>
+                        $con->close();
+                    ?>
+                  </select>
+                </div>
+                <div class="date-pike">
+                  <h5>Date of Visit </h5>
+                  <input class="date" id="datepicker" name="tgl_pesan" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd/mm/yyyy';}" required="">
+                </div>
 
-						  <div class="clearfix"> </div>
-						</div>
+                <div class="clearfix"> </div>
+              </div>
 
-						<div class="reservation">
-							<div class="groups">
-								<div class="grid_4 columns">
-								  <h5>Total Tickets</h5>
-									<select class="custom-select" id="select-4">
-										<option selected="selected">0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-									</select>
-								</div>
-								<div class="grid_5 columns">
-								  <h5>Adults</h5>
-									<select class="custom-select" id="select-5">
-										<option selected="selected">0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-									</select>
-								</div>
-								<div class="grid_6 columns">
-								  <h5>Child</h5>
-									<select class="custom-select" id="select-6">
-										<option selected="selected">0</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-									</select>
-								</div>
-							  <div class="clearfix"></div>
-							</div>
-						</div>
+              <div class="date_btn">
+                <input type="submit" value="Book">
+              </div>
+            </form>
+          <?php
+          }else{
+          ?>
+            <form action="act/login.php" method="post">
+              <!-- <div> -->
+                <div>
+                  <h5 style="text-align: center;" >Email</h5>
+                  <input type="email" name="email" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                </div>
 
-						<div class="date_btn">
-							<input type="submit" value="Book">
-						</div>
-					</form>
+                <div>
+                  <h5 style="text-align: center;" >Password </h5>
+                  <input type="password" name="password" value="" required="">
+                </div>
+
+                <div class="clearfix"> </div>
+              <!-- </div> -->
+
+              <div class="date_btn">
+                <input type="submit" value="Book">
+              </div>
+            </form>
+          <?php
+          }
+          ?>
 				</div>
 			</div>
 		</div>
@@ -443,8 +457,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<!--gallery-->
 	<!-- Include jQuery & Filterizr -->
-    <script src="js/jquery.filterizr.js"></script>
-    <script src="js/controls.js"></script>
+    <script src="assets/js/jquery.filterizr.js"></script>
+    <script src="assets/js/controls.js"></script>
     <!-- Kick off Filterizr -->
     <script type="text/javascript">
         $(function() {
@@ -454,7 +468,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
 
 	<!-- swipe box js -->
-	<script src="js/jquery.swipebox.min.js"></script>
+	<script src="assets/js/jquery.swipebox.min.js"></script>
 	<script type="text/javascript">
 			jQuery(function($) {
 				$(".swipebox").swipebox();
@@ -464,8 +478,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--//gallery-->
 
 	<!--strat-date-piker-->
-	<link rel="stylesheet" href="css/jquery-ui.css" />
-		<script src="js/jquery-ui.js"></script>
+	<link rel="stylesheet" href="assets/css/jquery-ui.css" />
+		<script src="assets/js/jquery-ui.js"></script>
 		<script>
 		  $(function() {
 	      $( "#datepicker,#datepicker1" ).datepicker();

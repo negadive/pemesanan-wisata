@@ -22,7 +22,7 @@ class Costumer{
         return $query;
     }
 
-    public static function  edit($con, $id, $nama, $email, $password, $gender, $no_hp, $alamat){
+    public static function edit($con, $id, $nama, $email, $password, $gender, $no_hp, $alamat){
         $query = $con->query("UPDATE costumer (nama, email, password, gender, no_hp, alamat)
             VALUES ('$nama', '$email', '$password', '$gender', '$no_hp', '$alamat') WHERE id=$id");
 
@@ -36,6 +36,14 @@ class Costumer{
         }
         return $hasil;
     }
+
+    public static function login($con, $email, $password){
+        $query = $con->query("SELECT * FROM costumer WHERE email='$email' AND password=md5('$password') limit 1");
+
+        return  $query->fetch_array(MYSQLI_ASSOC);
+    }
+
+
 
 }
 

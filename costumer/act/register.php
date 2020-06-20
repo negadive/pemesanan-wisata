@@ -1,6 +1,6 @@
 <?php
 include "../../koneksi.php";
-include "../../model/admin.php";
+include "model/admin.php";
 
 $db = new database();
 $con = $db->mysqli;

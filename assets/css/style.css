@@ -66,13 +66,13 @@ display:block;
 	font-size:16px;
 }
 
-/* -- Menu style -- */    
+/* -- Menu style -- */
 
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
     color: #fff;
     background-color: rgba(97, 86, 241, 0.54);
-	
+
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -91,12 +91,12 @@ display:block;
     border: 0px;
 	border-radius:0px;
 	left:205px;
-	bottom: 0px;
+	top: 77px;
     position: absolute;
 	background:transparent;
 }
 
-/* -- Banner style -- */ 
+/* -- Banner style -- */
 #toTop {
     display: none;
     text-decoration: none;
@@ -205,7 +205,7 @@ line-height:30px;
 padding-top:40px;
 font-size:14px;
 letter-spacing:1px;
-}     /* ------ About Ends ------*/ 
+}     /* ------ About Ends ------*/
 
 /* --------------  Visiting-time Starts -------------*/
 .visiting-time{
@@ -1226,7 +1226,7 @@ color:rgba(247, 34, 71, 0.75);
 
 @media screen and (max-width:1366px){
 .header {
-    height: 700px;
+    height: 127px;
 }
 .navbar {
 	left: 90px;
@@ -1277,7 +1277,7 @@ color:rgba(247, 34, 71, 0.75);
 .main {
     width: 60%;
 }
-	
+
 }
 
 @media screen and (max-width:1024px){
@@ -1380,7 +1380,7 @@ font-size:32px;
 }
 .ehover14 h4 {
     padding: 0.4em 0;
-} 
+}
 .booking-padding {
     padding: 100px 0px;
 }

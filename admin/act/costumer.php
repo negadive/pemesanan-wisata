@@ -1,7 +1,7 @@
 
 <?php
     include "../../koneksi.php";
-    include "./model/costumer.php";
+    include "../../model/costumer.php";
     $db = new database();
     $con = $db->mysqli;
 
