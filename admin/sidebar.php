@@ -30,7 +30,7 @@ session_start();
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-ticket-alt"></i>
               <p>
                 Wahana
                 <i class="right fas fa-angle-left"></i>
@@ -53,7 +53,7 @@ session_start();
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-money-bill-wave"></i>
               <p>
                 Transaksi
                 <i class="right fas fa-angle-left"></i>
@@ -76,11 +76,8 @@ session_start();
           </li>
           <li class="nav-item">
             <a href="costumer.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Costumer
-                <span class="right badge badge-danger">New</span>
-              </p>
+              <i class="nav-icon fas fa-user"></i>
+              <p>Costumer</p>
             </a>
           </li>
         </ul>

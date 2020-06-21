@@ -20,148 +20,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="../assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
-<?php
-  include "sidebar.php"
-?>
+  <?php
+    include "sidebar.php"
+  ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -193,6 +70,16 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <p>
+                  <div class="row">
+                    <div class="col-6 text-center">
+                      <i class="fa fa-shopping-cart text-success" aria-hidden="true"></i> Konfirmasi
+                    </div>
+                    <div class="col-6 text-center">
+                      <i class="fa fa-shopping-cart text-danger" aria-hidden="true"></i> Tolak
+                    </div>
+                  </div>
+                </p>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -204,24 +91,24 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <?php
-                    $wahana_list = Transaksi::read($con);
-                    foreach($wahana_list as $data) {
-                      if( ($data["tgl_pemesanan"]>date("Y-m-d")) & (isset($data["foto_bukti"]) & ($data["status"]) == '0')){
-                        echo "
-                          <tr>
-                            <td><img src='images/".$data["gambar"]."' width='20'/></td>
-                            <td>".$data["nama"]."</td>
-                            <td>".$data["deskripsi"]."</td>
-                            <td>".$data["tgl_pemesanan"]."</td>
-                            <td>".$data["total"]."</td>
-                            <td onclick='bayar(".json_encode($data).")'><i class='fa fa-shopping-cart' aria-hidden='true'></i> Konfirmasi</td>
-                          </tr>
-                        ";
+                    <?php
+                      $wahana_list = Transaksi::read($con);
+                      foreach($wahana_list as $data) {
+                        if( ($data["tgl_pemesanan"]>date("Y-m-d")) & (isset($data["foto_bukti"]) & ($data["status"]) == '0')){
+                          echo "
+                            <tr>
+                              <td><img src='images/".$data["gambar"]."' width='20'/></td>
+                              <td>".$data["nama"]."</td>
+                              <td>".$data["deskripsi"]."</td>
+                              <td>".$data["tgl_pemesanan"]."</td>
+                              <td>".$data["total"]."</td>
+                              <td onclick='bayar(".json_encode($data).")'><i class='fa fa-shopping-cart' aria-hidden='true'></i> Konfirmasi</td>
+                            </tr>
+                          ";
+                        }
                       }
-                    }
-                    // $con->close();
-                  ?>
+                      // $con->close();
+                    ?>
                   </tbody>
                   <tfoot>
                   <tr>
@@ -248,9 +135,17 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <p>
+                <div class="row">
+                  <div class="col-4 text-center"><i class="fa fa-check text-success" aria-hidden="true"></i> Lunas</div>
+                  <div class="col-4 text-center"><i class="fa fa-spinner" aria-hidden="true"></i> Menunggu pembayaran</div>
+                  <div class="col-4 text-center"><i class="fas fa-times text-danger" aria-hidden="true"></i> Gagal</div>
+                </div>
+                </p>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>No</th>
                     <th colspan="2">Nama</th>
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
@@ -262,15 +157,16 @@
                   <?php
                     $wahana_list = Transaksi::read($con);
                     foreach($wahana_list as $data) {
-                        if($data["tgl_pemesanan"]<date("Y-m-d")){
-                            $ket = '<i class="fa fa-check" aria-hidden="true"></i> Gagal';
+                        if($data["tgl_pemesanan"]<date("Y-m-d") | $data["status"] == '-1'){
+                            $ket = '<i class="fas fa-times text-danger" aria-hidden="true"></i>';
                         }else if($data["status"] == '1'){
-                            $ket = '<i class="fa fa-check" aria-hidden="true"></i> Lunas';
+                            $ket = '<i class="fa fa-check text-success" aria-hidden="true"></i>';
                         }else if($data["status"] == '0'){
-                            $ket = '<i class="fa fa-check" aria-hidden="true"></i> Belum bayar';
+                            $ket = '<i class="fa fa-spinner" aria-hidden="true"></i>';
                         }
                         echo "
                             <tr>
+                              <td>".$data["id"]."</td>
                               <td><img src='images/".$data["gambar"]."' width='20'/></td>
                               <td>".$data["nama"]."</td>
                               <td>".$data["deskripsi"]."</td>
@@ -285,6 +181,7 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                    <th>No</th>
                     <th colspan="2">Nama</th>
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
@@ -392,20 +289,20 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- SweetAlert2 -->
-<script src="../plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
+<script src="../assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+<script src="../assets/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
 
@@ -441,18 +338,10 @@
       })
     }
 
-    $("#example1").DataTable({
+    $("table").DataTable({
       "responsive": true,
       "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      "searching": false
     });
   });
 

@@ -28,6 +28,9 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
@@ -216,12 +219,11 @@
                           <td>".$data["nama"]."</td>
                           <td>".$data["deskripsi"]."</td>
                           <td>".$data["harga"]."</td>
-                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit'></i></td>
-                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt'></i></td>
+                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit'></i> Edit</td>
+                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt'></i> Hapus</td>
                         </tr>
                       ";
                     }
-                    $con->close();
                   ?>
                   </tbody>
                   <tfoot>
@@ -261,7 +263,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Wahana</h4>
+              <h4 class="modal-title">Tambah Paket Wahana</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -298,10 +300,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div> -->
                   </div>
                   <!-- /.card-body -->
 
@@ -328,7 +326,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Wahana</h4>
+              <h4 class="modal-title">Edit Paket Wahana</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -338,11 +336,27 @@
                 <img src="" id="edit_gambar" width="466">
               </div>
               <form role="form" action="./act/paket_wahana.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="edit_id">
+                <div class="form-group">
+                  <label for="exampleInputFile">Gambar</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" name="gambar" id="exampleInputFile">
+                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    </div>
+                    <div class="input-group-append">
+                      <button type="submit" name="upload-paketwahana" class="input-group-text">Upload</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <form role="form" action="./act/paket_wahana.php" method="post">
                   <div class="card-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Nama</label>
                       <input type="text" class="form-control" name="nama" id="edit_nama" placeholder="Masukkan nama wahana">
-                      <input type="hidden" class="form-control" name="id" id="edit_id">
+                      <input type="hidden" class="form-control" name="edit_id">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Harga</label>
@@ -357,27 +371,28 @@
                       <label>Deskripsi</label>
                       <textarea class="form-control" name="deskripsi" id="edit_desk" rows="3" placeholder="Enter ..."></textarea>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">Gambar</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="gambar" id="exampleInputFile">
-                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                          <span class="input-group-text" id="">Upload</span>
+                    <button type="submit" name="edit-paketwahana" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+
+                <form role="form" action="./act/paket_wahana.php" method="post">
+                  <div class="card-body">
+                    <input type="hidden" class="form-control" name="edit_id">
+                      <div class="form-group">
+                        <label>Wahana</label>
+                        <div class="select2-purple">
+                          <select class="select2" name="wahana[]" multiple="multiple" data-placeholder="Select a State" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                            <?php
+                              include "../model/wahana.php";
+                              $wahana = Wahana::read($con);
+                              foreach($wahana as $data){
+                                echo "<option name='opt_w' value='".$data["id"]."' >".$data["nama"]." </option>";
+                              }
+                            ?>
+                          </select>
                         </div>
                       </div>
-                    </div>
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                  </div>
-                  <!-- /.card-body -->
-
-                  <div class="card-footer">
-                    <button type="submit" name="edit-paketwahana" class="btn btn-primary">Submit</button>
+                      <button type="submit" name="match-paketwahana" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
             </div>
@@ -406,6 +421,8 @@
 <script src="../assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="../assets/plugins/select2/js/select2.full.min.js"></script>
 <!-- DataTables -->
 <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -435,7 +452,39 @@
     }
   };
 
+  function editData(item){
+      console.log(item)
+      $('#modal-edit').modal('show');
+      $('#edit_gambar').attr("src", "images/"+item.gambar)
+      $('#edit_nama').val(item.nama)
+      $('[name="edit_id"]').val(item.id)
+      $('#edit_desk').val(item.deskripsi)
+      $('#edit_harga').val(item.harga)
+      $('option[name="opt_w"').removeAttr('selected')
+      $.each(item.wahana, function(key, value){
+        $('option[name="opt_w"][value="'+value.id+'"]').attr('selected', '')
+      });
+
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+      //Initialize Select2 Elements
+      $('.select2bs4').select2({
+        theme: 'bootstrap4'
+      })
+  }
+
   $(function () {
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -467,15 +516,6 @@
     });
   });
 
-  function editData(item){
-      console.log(item)
-      $('#modal-edit').modal('show');
-      $('#edit_gambar').attr("src", "images/"+item.gambar)
-      $('#edit_nama').val(item.nama)
-      $('#edit_id').val(item.id)
-      $('#edit_desk').val(item.deskripsi)
-      $('#edit_harga').val(item.harga)
-  }
 
   function hapusData(id){
       var result = confirm('Apa kamu yakin ingin menghapus')
