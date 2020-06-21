@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if(!$_SESSION){
+    header("Location: ../");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <?php

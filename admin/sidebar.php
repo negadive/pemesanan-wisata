@@ -28,32 +28,51 @@ session_start();
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="transaksi.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Transaksi
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="wahana.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Wahana
-                <span class="right badge badge-danger">New</span>
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="wahana.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Wahana</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="paket_wahana.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Paket Wahana</p>
+                </a>
+              </li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a href="paket_wahana.php" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Paket Wahana
-                <span class="right badge badge-danger">New</span>
+                Transaksi
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="transaksi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transaksi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="laporan.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="costumer.php" class="nav-link">

@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if(!$_SESSION){
+    header("Location: ../");
+  }
+?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -164,12 +170,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Wahana</h1>
+            <h1>Paket Wahana</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Wahana</li>
+              <li class="breadcrumb-item active">Paket Wahana</li>
             </ol>
           </div>
         </div>

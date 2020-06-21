@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../koneksi.php";
-include "../admin/act/model/costumer.php";
+include "../model/costumer.php";
 $db = new database();
 $con = $db->mysqli;
 
