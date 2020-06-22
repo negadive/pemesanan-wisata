@@ -5,9 +5,9 @@
 <html>
 <head>
   <?php
-    if(!$_SESSION){
-      header("Location: ../");
-    }
+  if(!isset($_SESSION["user"])){
+    header("Location: ../");
+  }
     require "../koneksi.php";
     include "../model/transaksi.php";
     $db = new database();
@@ -35,133 +35,11 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-    </ul>
-
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
-
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../assets/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../assets/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../assets/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-<?php
-  include "sidebar.php"
-?>
+  <?php
+    include "sidebar.php"
+  ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -196,11 +74,14 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>No</th>
                     <th colspan="2">Nama</th>
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
                     <th>Harga</th>
-                    <th>Action</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Bayar</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -210,12 +91,15 @@
                       if( ($data["tgl_pemesanan"]>date("Y-m-d")) & (!isset($data["foto_bukti"]))){
                         echo "
                           <tr>
+                            <td>".$data["tr_id"]."</td>
                             <td><img src='images/".$data["gambar"]."' width='20'/></td>
                             <td>".$data["nama"]."</td>
                             <td>".$data["deskripsi"]."</td>
                             <td>".$data["tgl_pemesanan"]."</td>
+                            <td class='text-right'>Rp ".$data["harga"]."</td>
                             <td>".$data["total"]."</td>
-                            <td onclick='bayar(".json_encode($data).")'><i class='fa fa-shopping-cart' aria-hidden='true'></i> Bayar</td>
+                            <td class='text-right'>Rp ".$data["total"]*$data["harga"]."</td>
+                            <td onclick='bayar(".json_encode($data).")'><i class='fa fa-shopping-cart' aria-hidden='true'></i></td>
                           </tr>
                         ";
                       }
@@ -225,11 +109,14 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                    <th>No</th>
                     <th colspan="2">Nama</th>
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
                     <th>Harga</th>
-                    <th>Action</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
+                    <th>Bayar</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -248,35 +135,48 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <p>
+                <div class="row">
+                  <div class="col-4 text-center"><i class="fa fa-check text-success" aria-hidden="true"></i> Lunas</div>
+                  <div class="col-4 text-center"><i class="fa fa-spinner" aria-hidden="true"></i> Dalam proses</div>
+                  <div class="col-4 text-center"><i class="fas fa-times text-danger" aria-hidden="true"></i> Gagal</div>
+                </div>
+                </p>
+                <table id="riwayat" class="table table-bordered table-hover">
                   <thead>
                   <tr>
+                    <th>No</th>
                     <th colspan="2">Nama</th>
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
                     <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
                     <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
                     $wahana_list = Transaksi::read($con, $_SESSION["user"]["id"]);
-                    foreach($wahana_list as $data) {
+                    foreach($wahana_list as $data){
                       if( ($data["tgl_pemesanan"]<date("Y-m-d")) | (isset($data["foto_bukti"]))){
                         if(!isset($data["foto_bukti"])){
-                          $ket = '<i class="fa fa-times" aria-hidden="true"></i> Gagal';
+                          $ket = '<i class="fas fa-times text-danger" aria-hidden="true"></i> Gagal';
                         }else if($data["status"] == '0'){
                           $ket = "<i class='fa fa-spinner' aria-hidden='true'></i> Dalam Proses";
                         }else{
-                          $ket = '<i class="fa fa-check" aria-hidden="true"></i> Lunas';
+                          $ket = '<i class="fa fa-check text-success" aria-hidden="true"></i> Lunas';
                         }
                         echo "
                           <tr>
+                            <td>".$data["tr_id"]."</td>
                             <td><img src='images/".$data["gambar"]."' width='20'/></td>
                             <td>".$data["nama"]."</td>
                             <td>".$data["deskripsi"]."</td>
                             <td>".$data["tgl_pemesanan"]."</td>
+                            <td class='text-right'>Rp ".$data["harga"]."</td>
                             <td>".$data["total"]."</td>
+                            <td class='text-right'>Rp ".$data["total"]*$data["harga"]."</td>
                             <td>$ket</td>
                           </tr>
                         ";
@@ -287,10 +187,13 @@
                   </tbody>
                   <tfoot>
                   <tr>
+                    <th>No</th>
                     <th colspan="2">Nama</th>
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
                     <th>Harga</th>
+                    <th>Jumlah</th>
+                    <th>Total</th>
                     <th>Action</th>
                   </tr>
                   </tfoot>
@@ -447,14 +350,14 @@
       "responsive": true,
       "autoWidth": false,
     });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+    $('#riwayat').DataTable({
+      // "paging": true,
+      // "lengthChange": false,
+      // "searching": false,
+      // "ordering": true,
+      // "info": true,
+      // "autoWidth": false,
+      // "responsive": true,
     });
   });
 
@@ -464,7 +367,7 @@
       $('#bayar_nama').val(item.nama)
       $('#bayar_id').val(item.tr_id)
       $('#bayar_desk').val(item.deskripsi)
-      $('#bayar_harga').val(item.harga)
+      $('#bayar_harga').val(item.harga*item.total)
   }
 
   function hapusData(id){

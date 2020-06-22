@@ -371,6 +371,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   <h5>Date of Visit </h5>
                   <input class="date" id="datepicker" name="tgl_pesan" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd/mm/yyyy';}" required="">
                 </div>
+				<div class="clearfix"> </div>
+				</div>
+
+				<div class="reservation">
+					<div class="groups">
+						<div class="grid_6 columns">
+							<h5>Total Tickets</h5>
+							<input class="ticket" type="text" name="jum_tiket">
+						</div>
+					</div>
+				</div>
 
                 <div class="clearfix"> </div>
               </div>

@@ -19,5 +19,20 @@
             echo $con->error;
 
 
+    }else if( isset($_GET["dec"]) ){
+
+        $id = $_GET["dec"];
+
+        $query = "UPDATE transaksi SET status=-1 WHERE id=$id";
+        $bayar = $con->query($query);
+        if($bayar){
+
+            $con->close();
+            header('Location: ../transaksi.php?r=200&action=tolak');
+        }else
+
+            echo $con->error;
+
+
     }
 ?>

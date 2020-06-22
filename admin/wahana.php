@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!$_SESSION){
+  if(!$_SESSION["admin"]){
     header("Location: ../");
   }
 ?>
@@ -73,6 +73,14 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <div class="row">
+                  <div class="col-6 text-center">
+                    <i class="fas fa-edit text-primary" aria-hidden="true"></i> Edit
+                  </div>
+                  <div class="col-6 text-center">
+                    <i class="fas fa-trash-alt text-danger" aria-hidden="true"></i> Hapus
+                  </div>
+                </div>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -92,8 +100,8 @@
                           <td>".$data["nama"]."</td>
                           <td>".$data["deskripsi"]."</td>
                           <td>".$data["harga"]."</td>
-                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit'></i> Edit</td>
-                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt'></i> Hapus</td>
+                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit text-primary'></i></td>
+                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt text-danger'></i></td>
                         </tr>
                       ";
                     }
