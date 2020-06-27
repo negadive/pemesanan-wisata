@@ -23,7 +23,7 @@ body{
 	margin:0;
 }
 label {
-    display: none !important;
+    /* display: none !important; */
     margin-bottom: 0px !important;
 }
 body a{
@@ -76,6 +76,7 @@ display:block;
 }
 
 .navbar-inverse .navbar-nav>li>a {
+    border-radius: 15px 15px 0px 0px;
     color: #fff;
     background: rgba(247, 34, 71, 0.75);
 	margin:0px 2px;
@@ -413,9 +414,9 @@ display: inline-block;
 	position: relative;
 }
 
-#tabs-1,#tabs-2,#tabs-3 {
-width:88%;
-right:4px;
+#tabs-1, #tabs-2, #tabs-3, #tabs-4, #tabs-5, #tabs-6 {
+    width:88%;
+    right:4px;
 }
 
 
@@ -481,7 +482,7 @@ a.hover{
 	color:white;
 }
 
-.grid2a, .grid3a, .grid1a {
+.grida {
     float: left;
     width: 36%;
     margin-right: 20px;
@@ -492,7 +493,7 @@ a.hover{
 }
 
 
-.grid1b, .grid2b, .grid3b{
+.gridb{
 	width:49%;
     float: left;
 	background: rgba(2, 2, 2, 0.80);
@@ -501,7 +502,7 @@ a.hover{
 	border-radius:6px;
 }
 
-.grid1b p, .grid2b p, .grid3b p{
+.gridb p{
     margin: 0 5% !important;
     padding:10px 0px;
     border-bottom: 1px solid rgba(141, 141, 142, 0.20);
@@ -512,7 +513,7 @@ a.hover{
 	font-size:16px;
 }
 
-.grid1b h3, .grid2b h3, .grid3b h3 {
+.gridb h3 {
     padding: 0px;
     margin-bottom: 16px;
 	margin-top:10px;
@@ -885,17 +886,22 @@ margin: 0 auto 16px;
 }
 
 .facts {
-background:rgba(97, 86, 241, 1);
+border-radius: 10px;
+background:rgba(97, 86, 241, 0.8);
 padding: 40px 32px;
 }
 
 .facts h5{
 font-size: 18px;
 color: #fff;
-margin: 26px 0 10px 0;
+margin: 13px 0 5px 0;
 text-align: left;
 font-family:  sans-serif;
 font-weight: 400;
+}
+
+.facts label{
+color: #fff;
 }
 
 .reservation-name{
@@ -1548,14 +1554,14 @@ div#myNavbar {
 .gallery-w3l-title p {
     font-size: 14px;
 }
-#tabs-1, #tabs-2, #tabs-3 {
+#tabs-1, #tabs-2, #tabs-3, #tabs-4, #tabs-5, #tabs-6 {
     width: 100%;
     right: 0px;
 }
-.grid1a, .grid2a, .grid3a {
+.grida {
     width: 40%;
 }
-.grid1b, .grid2b, .grid3b {
+.gridb {
     width: 56%;
 }
 

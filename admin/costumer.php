@@ -81,7 +81,7 @@
                     <th>Jenis kelamin</th>
                     <th>No Telepon</th>
                     <th>Alamat</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -96,8 +96,7 @@
                           <td>$gender</td>
                           <td>".$data["no_hp"]."</td>
                           <td>".$data["alamat"]."</td>
-                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit'></i></td>
-                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt'></i></td>
+                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt text-danger'></i> Hapus</td>
                         </tr>
                       ";
                     }
@@ -111,7 +110,7 @@
                     <th>Jenis kelamin</th>
                     <th>No Telepon</th>
                     <th>Alamat</th>
-                    <th colspan="2">Action</th>
+                    <th>Action</th>
                   </tr>
                   </tfoot>
                 </table>

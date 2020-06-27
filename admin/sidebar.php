@@ -80,6 +80,12 @@ session_start();
               <p>Costumer</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="admin.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Admin</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

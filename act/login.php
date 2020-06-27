@@ -15,9 +15,10 @@ if( $user ){
     $_SESSION["user"]["id"] = $user["id"];
     $_SESSION["user"]["nama"] = $user["nama"];
 
-    header('Location: index.php');
+    header('Location: ../index.php');
+}else{
+    header('Location: ../index.php?r=404');
 }
-header('Location: ../index.php?r=404');
 
 $con->close();
 

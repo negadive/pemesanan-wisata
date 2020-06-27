@@ -36,6 +36,14 @@ session_start();
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="cetak_nota.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Cetak Nota
+              </p>
+            </a>
+          </li>
         </ul>
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="
     position: fixed;

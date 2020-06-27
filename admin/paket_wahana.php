@@ -220,7 +220,7 @@
                   <?php
                     $wahana_list = PaketWahana::read($con);
                     foreach ($wahana_list as $data) {
-                      $gambar_path = $data["gambar"] ? "images/".$data["gambar"] : "";
+                      $gambar_path = $data["gambar"] ? "../assets/images/".$data["gambar"] : "";
                       echo "
                         <tr>
                           <td><img src='$gambar_path' width='20'/></td>
@@ -463,7 +463,7 @@
   function editData(item){
       console.log(item)
       $('#modal-edit').modal('show');
-      $('#edit_gambar').attr("src", "images/"+item.gambar)
+      $('#edit_gambar').attr("src", "../assets/images/"+item.gambar)
       $('#edit_nama').val(item.nama)
       $('[name="edit_id"]').val(item.id)
       $('#edit_desk').val(item.deskripsi)
@@ -509,18 +509,9 @@
       })
     }
 
-    $("#example1").DataTable({
+    $("#example2").DataTable({
       "responsive": true,
       "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
     });
   });
 
@@ -528,7 +519,7 @@
   function hapusData(id){
       var result = confirm('Apa kamu yakin ingin menghapus')
       if(result){
-          window.location.href = "./act/paket_wahana.php?del="+id
+          window.location.href = "./act/admin.php?del="+id
       }
   }
 

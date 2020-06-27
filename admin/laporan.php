@@ -359,7 +359,7 @@
   function editData(item){
       console.log(item)
       $('#modal-edit').modal('show');
-      $('#edit_gambar').attr("src", "images/"+item.gambar)
+      $('#edit_gambar').attr("src", "../assets/images/"+item.gambar)
       $('#edit_nama').val(item.nama)
       $('#edit_id').val(item.id)
       $('#edit_desk').val(item.deskripsi)

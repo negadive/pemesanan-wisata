@@ -12,18 +12,17 @@
         $gambar = $_FILES["gambar"];
         $file_name = $gambar["name"];
         $file_tmp = $gambar["tmp_name"];
-        $new_path = "../images/$file_name";
+        $new_path = "../../assets/images/$file_name";
 
 
         $query = "INSERT INTO wahana (nama, harga, deskripsi, gambar) VALUES ('$nama', '$harga', '$deskripsi', '$file_name')";
         $wahana = $con->query($query);
         if($wahana){
             $q = move_uploaded_file($file_tmp, $new_path);
-            if($q){
-                $con->close();
-                header('Location: ../wahana.php?r=200&action=tambah');
-            }
+            $con->close();
+            header('Location: ../wahana.php?r=200&action=tambah');
         }
+        header('Location: ../wahana.php?r=400&action=tambah');
 
 
     }else if( isset($_POST["edit-wahana"]) ){
@@ -41,7 +40,7 @@
             $file_name = $gambar["name"];
             $query_gambar = ", gambar='$file_name'";
             $file_tmp = $gambar["tmp_name"];
-            $new_path = "../images/$file_name";
+            $new_path = "../../assets/images/$file_name";
 
         }
         $query = "UPDATE wahana SET nama='$nama', harga='$harga', deskripsi='$deskripsi' $query_gambar WHERE id=$id";

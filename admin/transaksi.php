@@ -97,11 +97,11 @@
                     <?php
                       $wahana_list = Transaksi::read($con);
                       foreach($wahana_list as $data) {
-                        if( ($data["tgl_pemesanan"]>date("Y-m-d")) & (isset($data["foto_bukti"]) & ($data["status"]) == '0')){
+                        if( ($data["tgl_pemesanan"]>=date("Y-m-d")) & (isset($data["foto_bukti"]) & ($data["status"]) == '0')){
                           echo "
                             <tr>
                               <td>".$data["tr_id"]."</td>
-                              <td><img src='images/".$data["gambar"]."' width='20'/></td>
+                              <td><img src='../assets/images/".$data["gambar"]."' width='20'/></td>
                               <td>".$data["nama"]."</td>
                               <td>".$data["deskripsi"]."</td>
                               <td>".$data["tgl_pemesanan"]."</td>
@@ -186,7 +186,7 @@
                           echo "
                               <tr>
                                 <td>".$data["tr_id"]."</td>
-                                <td><img src='images/".$data["gambar"]."' width='20'/></td>
+                                <td><img src='../assets/images/".$data["gambar"]."' width='20'/></td>
                                 <td>".$data["nama"]."</td>
                                 <td>".$data["deskripsi"]."</td>
                                 <td>".$data["tgl_pemesanan"]."</td>
@@ -274,7 +274,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" name="konfirmasi-transaksi" form="konfirmasi-transaksi" class="btn btn-primary">Save changes</button>
+              <button type="submit" name="konfirmasi-transaksi" form="konfirmasi-transaksi" class="btn btn-primary">Konfirmasi</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -358,7 +358,7 @@
   function bayar(item){
       console.log(item)
       $('#modal-edit').modal('show');
-      $('#edit_gambar').attr("src", "images/"+item.foto_bukti)
+      $('#edit_gambar').attr("src", "../assets/images/"+item.foto_bukti)
       $('#bayar_nama').val(item.nama)
       $('#bayar_id').val(item.tr_id)
       $('#bayar_desk').val(item.deskripsi)

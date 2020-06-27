@@ -21,7 +21,7 @@ if($_SESSION["user"]){
     $transaksi = $con->query($query);
     if($transaksi){
         $con->close();
-        header('Location: ../index.php?r=200');
+        header('Location: ../costumer/index.php?r=200');
     }else{
         echo $con->error;
     }

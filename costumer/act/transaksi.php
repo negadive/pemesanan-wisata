@@ -12,7 +12,7 @@
         $gambar = $_FILES["gambar"];
         $file_name = $gambar["name"];
         $file_tmp = $gambar["tmp_name"];
-        $new_path = "../images/$file_name";
+        $new_path = "../../assets/images/$file_name";
 
 
         $query = "UPDATE transaksi SET tgl_bayar=now(), foto_bukti='$file_name', status=0 WHERE id=$id";

@@ -48,12 +48,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Pesanan</h1>
+            <h1>Cetak Bukti Pemesanan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Pesanan</li>
+              <li class="breadcrumb-item active">Cetak Bukti Pemesanan</li>
             </ol>
           </div>
         </div>
@@ -67,81 +67,10 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Daftar Pesanan</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>No</th>
-                    <th colspan="2">Nama</th>
-                    <th>Deskripsi</th>
-                    <th>Tanggal</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Total</th>
-                    <th>Bayar</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-                    $wahana_list = Transaksi::read($con, $_SESSION["user"]["id"]);
-                    foreach($wahana_list as $data) {
-                      if( ($data["tgl_pemesanan"]>date("Y-m-d")) & (!isset($data["foto_bukti"]))){
-                        echo "
-                          <tr>
-                            <td>".$data["tr_id"]."</td>
-                            <td><img src='../assets/images/".$data["gambar"]."' width='20'/></td>
-                            <td>".$data["nama"]."</td>
-                            <td>".$data["deskripsi"]."</td>
-                            <td>".$data["tgl_pemesanan"]."</td>
-                            <td class='text-right'>Rp ".$data["harga"]."</td>
-                            <td>".$data["total"]."</td>
-                            <td class='text-right'>Rp ".$data["total"]*$data["harga"]."</td>
-                            <td onclick='bayar(".json_encode($data).")'><i class='fa fa-shopping-cart' aria-hidden='true'></i></td>
-                          </tr>
-                        ";
-                      }
-                    }
-                    // $con->close();
-                  ?>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>No</th>
-                    <th colspan="2">Nama</th>
-                    <th>Deskripsi</th>
-                    <th>Tanggal</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Total</th>
-                    <th>Bayar</th>
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
                 <h3 class="card-title">Riwayat Transaksi</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <p>
-                <div class="row">
-                  <div class="col-4 text-center"><i class="fa fa-check text-success" aria-hidden="true"></i> Lunas</div>
-                  <div class="col-4 text-center"><i class="fa fa-spinner" aria-hidden="true"></i> Dalam proses</div>
-                  <div class="col-4 text-center"><i class="fas fa-times text-danger" aria-hidden="true"></i> Gagal</div>
-                </div>
-                </p>
                 <table id="riwayat" class="table table-bordered table-hover">
                   <thead>
                   <tr>
@@ -159,14 +88,7 @@
                   <?php
                     $wahana_list = Transaksi::read($con, $_SESSION["user"]["id"]);
                     foreach($wahana_list as $data){
-                      if( ($data["tgl_pemesanan"]<date("Y-m-d")) | (isset($data["foto_bukti"]))){
-                        if(!isset($data["foto_bukti"]) | $data["tgl_pemesanan"]<date("Y-m-d")){
-                          $ket = '<i class="fas fa-times text-danger" aria-hidden="true"></i> Gagal';
-                        }else if($data["status"] == '0'){
-                          $ket = "<i class='fa fa-spinner' aria-hidden='true'></i> Dalam Proses";
-                        }else{
-                          $ket = '<i class="fa fa-check text-success" aria-hidden="true"></i> Lunas';
-                        }
+                      if( $data["status"]=="1" | (isset($data["foto_bukti"]))){
                         echo "
                           <tr>
                             <td>".$data["tr_id"]."</td>
@@ -177,7 +99,7 @@
                             <td class='text-right'>Rp ".$data["harga"]."</td>
                             <td>".$data["total"]."</td>
                             <td class='text-right'>Rp ".$data["total"]*$data["harga"]."</td>
-                            <td>$ket</td>
+                            <td onclick='print(".$data["tr_id"].")'><i class='fa fa-print text-primary' aria-hidden='true'></i> Cetak</td>
                           </tr>
                         ";
                       }
@@ -361,13 +283,8 @@
     });
   });
 
-  function bayar(item){
-      console.log(item)
-      $('#modal-edit').modal('show');
-      $('#bayar_nama').val(item.nama)
-      $('#bayar_id').val(item.tr_id)
-      $('#bayar_desk').val(item.deskripsi)
-      $('#bayar_harga').val(item.harga*item.total)
+  function print(item){
+    window.location.href = "./cetak.php?id="+item
   }
 
   function hapusData(id){

@@ -79,7 +79,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<li class="active"><a href="#home" class="scroll wow fadeInRight" data-wow-delay=".1s">Beranda</a></li>
 							<li><a href="#about" class="scroll wow fadeInRight" data-wow-delay="0.3s">About Us</a></li>
 							<li><a href="#timing" class="scroll wow fadeInRight" data-wow-delay="0.5s">Timings</a></li>
-							<li><a href="#facilities" class="scroll wow fadeInRight" data-wow-delay="0.7s">Facilities</a></li>
 							<li><a href="#price" class="scroll wow fadeInRight" data-wow-delay="0.9s">Ticket Price</a></li>
 							<li><a href="#gallery" class="scroll wow fadeInRight" data-wow-delay="1.1s">Gallery</a></li>
 							<li><a href="#booking" class="scroll wow fadeInRight" data-wow-delay="1.3s">Pemesanan Online</a></li>
@@ -154,86 +153,65 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div id="tabs4">
 						<ul>
 							<li><a href="#tabs-1" title="">Basic</a></li>
-							<li><a href="#tabs-2" title="">Children</a></li>
-							<li><a href="#tabs-3" title="">Special</a></li>
+							<?php
+								$paket = $con->query("SELECT * FROM paketwahana");
+								while($data = $paket->fetch_array(MYSQLI_ASSOC)){
+									echo "<li><a href='#tabs-".$data["id"]."' title=''>".$data["nama"]."</a></li>";
+								}
+							?>
 						</ul>
 
 						<div id="tabs_container">
 
 							<div id="tabs-1">  <!-- Tabs container Starts -->
-									<section class="grid1a">
+									<section class="grida">
 										<section class="para-a">
-											<h4>One Person</h4>
-											<h5> <span>$</span>65</h5>
-											<p>Fun as You LIke</p>
-											<p>Only place in the World</p>
+											<h4 id="wahana_name">One Person</h4>
+											<h5 id="wahana_price"> <span>$</span>65</h5>
+											<p id="wahana_desc">Fun as You LIke</p>
 										</section>
 									</section>
 
-									<section class="grid1b">
+									<section class="gridb">
 										<h3>Basic Ticket</h3>
 										<section class="para">
-											<p> Entry Pass </p>
-											<p> All Roller Coasters  </p>
-											<p> Ferris Wheel  </p>
-											<p> Pendulum Rides Basic </p>
-											<p> Carousel - All Rides </p>
-											<p> Bumper Cars </p>
-											<p> skyRide </p>
-											<p> water slide  </p>
+										<?php
+											$wahanas = $con->query('SELECT * FROM wahana');
+											while($data = $wahanas->fetch_array(MYSQLI_ASSOC)){
+												echo "<p onclick='detail(".json_encode($data).")'>".$data["nama"]." </p>";
+											}
+										?>
 										</section>
 									</section>
 							</div>
-
-							<div id="tabs-2">
-									<section class="grid2a">
-										<section class="para-a">
-											<h4>One Child</h4>
-											<h5> <span>$</span>40</h5>
-											<p>Fun as You LIke</p>
-											<p>Only place in the World</p>
+							<?php
+								$query = $con->query("SELECT * FROM paketwahana");
+								while($paket = $query->fetch_array(MYSQLI_ASSOC)){
+							?>
+								<div id="tabs-<?php echo $paket["id"];?>">
+										<section class="grida">
+											<section class="para-a">
+												<h4>One Child</h4>
+												<h5> <span>Rp</span><?php echo $paket["harga"]?></h5>
+												<p><?php echo $paket["deskripsi"]?></p>
+											</section>
 										</section>
-									</section>
 
-									<section class="grid2b">
-										<h3>Children Ticket</h3>
-										<section class="para">
-											<p> Entry Pass </p>
-											<p> All Roller Coasters  </p>
-											<p> Ferris Wheel  </p>
-											<p> Pendulum Rides Basic </p>
-											<p> Carousel  </p>
-											<p> Bumper Cars </p>
-											<p> skyRide </p>
-											<p> water slide </p>
+										<section class="gridb">
+											<h3><?php echo $paket["nama"]; ?></h3>
+											<section class="para">
+												<?php
+													$wahanas = $con->query('SELECT * FROM wahana join matchpw on wahana.id=matchpw.wahana_id WHERE matchpw.paketwahana_id = '.$paket["id"]);
+													while($wahana = $wahanas->fetch_array(MYSQLI_ASSOC)){
+														echo "<p>".$wahana["nama"]." </p>";
+													}
+												?>
+											</section>
 										</section>
-									</section>
-							</div>
-
-							<div id="tabs-3" >
-									<section class="grid3a">
-										<section class="para-a">
-											<h4>Four Persons</h4>
-											<h5> <span>$</span>199</h5>
-											<p>Fun as You LIke</p>
-											<p>Only place in the World</p>
-										</section>
-									</section>
-
-									<section class="grid3b">
-										<h3>Special Ticket</h3>
-										<section class="para">
-											<p> Entry Pass </p>
-											<p> All Roller Coasters  </p>
-											<p> Ferris Wheel  </p>
-											<p> Pendulum Rides Basic </p>
-											<p> Carousel - All Rides </p>
-											<p> Bumper Cars </p>
-											<p> skyRide - One Way </p>
-											<p> water slide - only Two time </p>
-										</section>
-									</section>
-							</div>
+								</div>
+							<?php
+								}
+							?>
 
 						</div><!--End tabs container-->
 					</div><!--End tabs-->
@@ -339,84 +317,123 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="booking" id="booking">
 	<div class="container">
 		<div class="booking-padding">
-		  <h3>Online Ticket Booking </h3>
-			<div class="main">
-				<div class="facts">
-
-          <?php
+      <h3>Online Ticket Booking </h3>
+        <?php
           if( isset($_SESSION["user"]) ){
-          ?>
-            <form action="act/pesan.php" method="post">
-              <div>
-                <div class="reservation-name">
-                  <h5>Pesan Wahana</h5>
-                  <select class="custom-select" name="pesan_wahana" id="select-4">
-                    <?php
-                        include "model/paket_wahana.php";
-                        $wahanas = PaketWahana::read($con);
-                        foreach ($wahanas as $data) {
-                          echo '<option value="P-'.$data["id"].'">'.$data["nama"].'</option>';
-                        }
-                        include "model/wahana.php";
-                        $wahanas = Wahana::read($con);
-                        foreach ($wahanas as $data) {
-                          echo '<option value="W-'.$data["id"].'">'.$data["nama"].'</option>';
-                        }
-
-                        $con->close();
-                    ?>
-                  </select>
-                </div>
-                <div class="date-pike">
-                  <h5>Date of Visit </h5>
-                  <input class="date" id="datepicker" name="tgl_pesan" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd/mm/yyyy';}" required="">
-                </div>
-				<div class="clearfix"> </div>
-				</div>
-
-				<div class="reservation">
-					<div class="groups">
-						<div class="grid_6 columns">
-							<h5>Total Tickets</h5>
-							<input class="ticket" type="text" name="jum_tiket">
-						</div>
-					</div>
-				</div>
-
-                <div class="clearfix"> </div>
-              </div>
-
-              <div class="date_btn">
-                <input type="submit" value="Book">
-              </div>
-            </form>
-          <?php
-          }else{
-          ?>
-            <form action="act/login.php" method="post">
-              <!-- <div> -->
+        ?>
+          <div class="main">
+            <div class="facts">
+              <form action="act/pesan.php" method="post">
                 <div>
-                  <h5 style="text-align: center;" >Email</h5>
-                  <input type="email" name="email" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                </div>
+                  <div class="reservation-name">
+                    <h5>Pesan Wahana</h5>
+                    <select class="custom-select" name="pesan_wahana" id="select-4">
+                      <?php
+                          include "model/paket_wahana.php";
+                          $wahanas = PaketWahana::read($con);
+                          foreach ($wahanas as $data) {
+                            echo '<option value="P-'.$data["id"].'">'.$data["nama"].'</option>';
+                          }
+                          include "model/wahana.php";
+                          $wahanas = Wahana::read($con);
+                          foreach ($wahanas as $data) {
+                            echo '<option value="W-'.$data["id"].'">'.$data["nama"].'</option>';
+                          }
 
-                <div>
-                  <h5 style="text-align: center;" >Password </h5>
-                  <input type="password" name="password" value="" required="">
+                          $con->close();
+                      ?>
+                    </select>
+                  </div>
+                  <div class="date-pike">
+                    <h5>Date of Visit </h5>
+                    <input class="date" id="datepicker" name="tgl_pesan" type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'dd/mm/yyyy';}" required="">
+                  </div>
+                  <div class="clearfix"> </div>
                 </div>
-
+                <div class="reservation">
+                  <div class="groups">
+                    <div class="grid_6 columns">
+                      <h5>Total Tickets</h5>
+                      <input class="ticket" type="text" name="jum_tiket">
+                    </div>
+                  </div>
+                </div>
                 <div class="clearfix"> </div>
-              <!-- </div> -->
-
-              <div class="date_btn">
-                <input type="submit" value="Book">
+                <div class="date_btn">
+                  <input type="submit" value="Book">
+                </div>
+              </form>
+            </div>
+          </div>
+        <?php
+        }else{
+        ?>
+          <div class="row">
+            <div class=col-sm-6>
+              <div class="facts">
+                <form action="act/login.php" method="post">
+                    <div>
+                      <h5 style="text-align: center;" >Email</h5>
+                      <input type="email" name="email" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                    </div>
+                    <div>
+                      <h5 style="text-align: center;" >Password </h5>
+                      <input type="password" name="password" value="" required="">
+                    </div>
+                    <div class="clearfix"> </div>
+                  <div class="date_btn">
+                    <input type="submit" value="Masuk">
+                  </div>
+                </form>
               </div>
-            </form>
-          <?php
-          }
-          ?>
-				</div>
-			</div>
+            </div>
+            <div class=col-sm-6>
+              <div class="facts">
+                <form action="act/register.php" method="post">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h5 style="text-align: center;" >Email</h5>
+                      <input type="email" name="email" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h5 style="text-align: center;" >Nama</h5>
+                      <input type="text" name="nama" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h5 style="text-align: center;" >Password </h5>
+                      <input type="password" name="password" value="" required="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h5 style="text-align: center;" >Password </h5>
+                      <input type="password" name="password2" value="" required="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h5 style="text-align: center;" >No Telepon </h5>
+                      <input type="text" name="no_hp" value="" required="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h5 style="text-align: center;" >Jenis Kelamin </h5>
+                      <input type="radio" name="jen_kel" id="male" value="M">
+                      <label for="male">Laki-laki</label>
+                      <input type="radio" name="jen_kel" id="female" value="F">
+                      <label for="female">Perempuan</label>
+                    </div>
+                    <div class="col-sm-12">
+                      <h5 style="text-align: center;" >Alamat </h5>
+                      <textarea name="alamat" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="date_btn">
+                      <input type="submit" value="Daftar">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
 		</div>
 	</div>
 </div>  <!-- Ticket Booking Ends -->
@@ -475,7 +492,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $(function() {
             //Initialize filterizr with default options
             $('.filtr-container').filterizr();
-        });
+		});
+
+		function detail(item){
+			$('#wahana_name').html(item.nama)
+			$('#wahana_price').html('<span>Rp</span>'+item.harga)
+			$('#wahana_desc').html(item.deskripsi)
+		}
     </script>
 
 	<!-- swipe box js -->

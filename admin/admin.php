@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!$_SESSION["admin"]){
+  if(!$_SESSION){
     header("Location: ../");
   }
 ?>
@@ -8,7 +8,7 @@
 <html>
 <?php
   require "../koneksi.php";
-  include "../model/wahana.php";
+  include "../model/admin.php";
   $db = new database();
   $con = $db->mysqli;
 ?>
@@ -47,12 +47,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Wahana</h1>
+            <h1>Admin</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Wahana</li>
+              <li class="breadcrumb-item active">Admin</li>
             </ol>
           </div>
         </div>
@@ -66,42 +66,31 @@
           <div class="col-12">
             <div class="card">
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                  Tambah Wahana
+                  Tambah Admin
                 </button>
               <div class="card-header">
-                <h3 class="card-title">Daftar Wahana</h3>
+                <h3 class="card-title">Daftar Admin</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <div class="row">
-                  <div class="col-6 text-center">
-                    <i class="fas fa-edit text-primary" aria-hidden="true"></i> Edit
-                  </div>
-                  <div class="col-6 text-center">
-                    <i class="fas fa-trash-alt text-danger" aria-hidden="true"></i> Hapus
-                  </div>
-                </div>
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
-                  <tr>
-                    <th colspan="2">Nama</th>
-                    <th>Deskripsi</th>
-                    <th>Harga</th>
-                    <th colspan="2">Action</th>
-                  </tr>
+                    <tr>
+                      <th>Username</th>
+                      <th>Nama</th>
+                      <th colspan="2">Action</th>
+                    </tr>
                   </thead>
                   <tbody>
                   <?php
-                    $wahana_list = Wahana::read($con);
-                    foreach ($wahana_list as $data) {
+                    $admins = $con->query("SELECT * FROM admin");
+                    while($data = $admins->fetch_array(MYSQLI_ASSOC)){
                       echo "
                         <tr>
-                          <td><img src='../assets/images/".$data["gambar"]."' width='20'/></td>
-                          <td>".$data["nama"]."</td>
-                          <td>".$data["deskripsi"]."</td>
-                          <td>".$data["harga"]."</td>
-                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit text-primary'></i></td>
-                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt text-danger'></i></td>
+                          <td>".$data["username"]."</td>
+                          <td>".$data["name"]."</td>
+                          <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit text-primary'></i> Edit</td>
+                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt text-danger'></i> Hapus</td>
                         </tr>
                       ";
                     }
@@ -109,12 +98,11 @@
                   ?>
                   </tbody>
                   <tfoot>
-                  <tr>
-                    <th colspan="2">Nama</th>
-                    <th>Deskripsi</th>
-                    <th>Harga</th>
-                    <th colspan="2">Action</th>
-                  </tr>
+                    <tr>
+                      <th>Username</th>
+                      <th>Nama</th>
+                      <th colspan="2">Action</th>
+                    </tr>
                   </tfoot>
                 </table>
               </div>
@@ -145,47 +133,32 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Wahana</h4>
+              <h4 class="modal-title">Tambah Admin</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" id="tambah-wahana" action="./act/wahana.php" method="post" enctype="multipart/form-data">
+              <form role="form" action="./act/admin.php" id="tambah-admin" method="post" enctype="multipart/form-data">
                   <div class="card-body">
                     <div class="form-group">
+                      <label for="exampleInputEmail1">Username</label>
+                      <input type="text" class="form-control" name="username" id="exampleInputEmail1" placeholder="Masukkan username admin">
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputEmail1">Nama</label>
-                      <input type="text" class="form-control" name="nama" id="exampleInputEmail1" placeholder="Masukkan nama wahana">
+                      <input type="text" class="form-control" name="nama" id="exampleInputEmail1" placeholder="Masukkan nama admin">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Harga</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp</span>
-                            </div>
-                            <input type="text" class="form-control" name="harga">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <label>Deskripsi</label>
-                      <textarea class="form-control" name="deskripsi" rows="3" placeholder="Enter ..."></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputFile">Gambar</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="gambar" id="exampleInputFile">
-                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                      </div>
+                      <label for="exampleInputEmail1">Password</label>
+                      <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="Masukkan password admin">
                     </div>
                   </div>
-                  <!-- /.card-body -->
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-              <button type="submit" name="tambah-wahana" form="tambah-wahana" class="btn btn-primary">Tambah</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" name="tambah-admin" form="tambah-admin" class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -201,51 +174,33 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Wahana</h4>
+              <h4 class="modal-title">Edit Admin</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form role="form" action="./act/wahana.php" id="edit-wahana" method="post" enctype="multipart/form-data">
-                  <div>
-                    <img src="" id="edit_gambar" width="466">
+              <form role="form" action="./act/admin.php" id="edit-admin" method="post" enctype="multipart/form-data">
+                <input type="hidden" class="form-control" name="edit_id">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control" name="username" id="edit_username" placeholder="Masukkan username admin">
                   </div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label for="exampleInputFile">Gambar</label>
-                      <div class="input-group">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="gambar" id="exampleInputFile">
-                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
-                      <input type="text" class="form-control" name="nama" id="edit_nama" placeholder="Masukkan nama wahana">
-                      <input type="hidden" class="form-control" name="id" id="edit_id">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Harga</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Rp</span>
-                            </div>
-                            <input type="text" class="form-control" name="harga" id="edit_harga">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <label>Deskripsi</label>
-                      <textarea class="form-control" name="deskripsi" id="edit_desk" rows="3" placeholder="Enter ..."></textarea>
-                    </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama</label>
+                    <input type="text" class="form-control" name="nama" id="edit_nama" placeholder="Masukkan nama admin">
                   </div>
-                  <!-- /.card-body -->
-                </form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" class="form-control" name="password" id="edit_password" placeholder="Password tidak dirubah">
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" name="edit-wahana" form="edit-wahana" class="btn btn-primary">Save changes</button>
+              <button type="submit" name="edit-admin" form="edit-admin" class="btn btn-primary">Save changes</button>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -268,8 +223,6 @@
 <script src="../assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="../assets/plugins//bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- DataTables -->
 <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -283,10 +236,6 @@
 <script src="../assets/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
-  $(document).ready(function () {
-    bsCustomFileInput.init();
-  });
-
 
   var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
@@ -316,7 +265,7 @@
       var action = getUrlParameter('action')
       Toast.fire({
         icon: 'success',
-        title: 'Wahana berhasil di'+action
+        title: 'Admin berhasil di'+action
       })
     }
 
@@ -336,18 +285,18 @@
   });
 
   function editData(item){
+      console.log(item)
       $('#modal-edit').modal('show');
-      $('#edit_gambar').attr("src", "../assets/images/"+item.gambar)
-      $('#edit_nama').val(item.nama)
-      $('#edit_id').val(item.id)
-      $('#edit_desk').val(item.deskripsi)
-      $('#edit_harga').val(item.harga)
+      $('[name="edit_id"]').val(item.idadmin)
+      $('#edit_username').val(item.username)
+      $('#edit_username').val(item.username)
+      $('#edit_nama').val(item.name)
   }
 
   function hapusData(id){
       var result = confirm('Apa kamu yakin ingin menghapus')
       if(result){
-          window.location.href = "./act/wahana.php?del="+id
+          window.location.href = "./act/paket_wahana.php?del="+id
       }
   }
 

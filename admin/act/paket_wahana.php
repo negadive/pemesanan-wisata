@@ -11,7 +11,7 @@
         $gambar = $_FILES["gambar"];
         $file_name = $gambar["name"];
         $file_tmp = $gambar["tmp_name"];
-        $new_path = "../images/$file_name";
+        $new_path = "../../assets/images/$file_name";
 
         $query = "INSERT INTO paketwahana (nama, harga, deskripsi, gambar) VALUES ('$nama', '$harga', '$deskripsi', '$file_name')";
         $paketwahana = $con->query($query);
@@ -39,7 +39,7 @@
             $file_name = $gambar["name"];
             $query_gambar = ", gambar='$file_name'";
             $file_tmp = $gambar["tmp_name"];
-            $new_path = "../images/$file_name";
+            $new_path = "../../assets/images/$file_name";
 
         }
         $query = "UPDATE paketwahana SET nama='$nama', harga='$harga', deskripsi='$deskripsi' $query_gambar WHERE id=$id";
