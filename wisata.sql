@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `wisata` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `wisata`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: wisata
@@ -35,6 +33,16 @@ CREATE TABLE `admin` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (7,'admin','21232f297a57a5a743894a0e4a801fc3','Admin Utama');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `costumer`
 --
 
@@ -68,9 +76,9 @@ CREATE TABLE `matchpw` (
   PRIMARY KEY (`id`),
   KEY `fk_matchpw_1_idx` (`wahana_id`),
   KEY `fk_matchpw_2_idx` (`paketwahana_id`),
-  CONSTRAINT `fk_matchpw_1` FOREIGN KEY (`wahana_id`) REFERENCES `wahana` (`id`),
-  CONSTRAINT `fk_matchpw_2` FOREIGN KEY (`paketwahana_id`) REFERENCES `paketwahana` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_matchpw_1` FOREIGN KEY (`wahana_id`) REFERENCES `wahana` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_matchpw_2` FOREIGN KEY (`paketwahana_id`) REFERENCES `paketwahana` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +95,7 @@ CREATE TABLE `paketwahana` (
   `deskripsi` varchar(200) DEFAULT NULL,
   `gambar` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,4 +146,4 @@ CREATE TABLE `wahana` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-27 20:44:42
+-- Dump completed on 2020-06-28 13:38:11

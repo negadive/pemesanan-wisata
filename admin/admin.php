@@ -90,7 +90,7 @@
                           <td>".$data["username"]."</td>
                           <td>".$data["name"]."</td>
                           <td onclick='editData(".json_encode($data).")'><i class='fas fa-edit text-primary'></i> Edit</td>
-                          <td onclick='hapusData(".$data["id"].")'><i class='fas fa-trash-alt text-danger'></i> Hapus</td>
+                          <td onclick='hapusData(".$data["idadmin"].")'><i class='fas fa-trash-alt text-danger'></i> Hapus</td>
                         </tr>
                       ";
                     }
@@ -296,7 +296,7 @@
   function hapusData(id){
       var result = confirm('Apa kamu yakin ingin menghapus')
       if(result){
-          window.location.href = "./act/paket_wahana.php?del="+id
+          window.location.href = "./act/admin.php?del="+id
       }
   }
 

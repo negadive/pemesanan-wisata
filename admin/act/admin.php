@@ -44,10 +44,14 @@
     }else if( isset($_GET["del"]) ){
         $id = $_GET["del"];
 
-        $query = "DELETE FROM admin WHERE id=$id";
+        $query = "DELETE FROM admin WHERE idadmin=$id";
         $admin = $con->query($query);
-
-        $con->close();
-        header('Location: ../admin.php?r=200&action=hapus');
+        if( $admin ){
+            $con->close();
+            header('Location: ../admin.php?r=200&action=hapus');
+        }else{
+            echo $con->error;
+            // header('Location: ../admin.php?r=400&action=hapus');
+        }
     }
 ?>

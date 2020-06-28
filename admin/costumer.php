@@ -201,66 +201,6 @@
       <!-- /.modal -->
 
 
-
-      <div class="modal fade" id="modal-edit">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Edit Costumer</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form role="form" action="./act/paket_wahana.php" method="post" enctype="multipart/form-data">
-              <div class="card-body">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Nama</label>
-                      <input type="text" class="form-control" name="nama" id="edit_nama" placeholder="Masukkan nama costumer">
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" id="edit_gender_m" value="M">
-                          <label class="form-check-label">Laki laki</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" id="edit_gender_f" value="F">
-                          <label class="form-check-label">Perempuan</label>
-                        </div>
-                      </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email</label>
-                      <input type="email" class="form-control" name="email" id="edit_email" placeholder="Masukkan email costumer">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">No Telepon</label>
-                      <input type="text" class="form-control" name="no_hp" id="edit_no_hp" placeholder="Masukkan no. telepon costumer">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Alamat</label>
-                      <input type="text" class="form-control" name="alamat" id="edit_alamat" placeholder="Masukkan alamat costumer">
-                    </div>
-                  </div>
-                  <!-- /.card-body -->
-
-                  <div class="card-footer">
-                    <button type="submit" name="edit-costumer" class="btn btn-primary">Submit</button>
-                  </div>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-      <!-- /.modal -->
-      <!-- /.modal -->
-
-
       <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -334,24 +274,10 @@
     });
   });
 
-  function editData(item){
-      console.log(item)
-      $('#modal-edit').modal('show');
-      $('#edit_nama').val(item.nama)
-      $('#edit_email').val(item.nama)
-      $('#edit_no_hp').val(item.nama)
-      $('#edit_alamat').val(item.id)
-      if(item.gender=="L"){
-          $('#edit_gender_m').attr("checked", "checked");
-      }else{
-          $('#edit_gender_f').attr("checked", "checked");
-      }
-  }
-
   function hapusData(id){
       var result = confirm('Apa kamu yakin ingin menghapus')
       if(result){
-          window.location.href = "./act/paket_wahana.php?del="+id
+          window.location.href = "./act/costumer.php?del="+id
       }
   }
 

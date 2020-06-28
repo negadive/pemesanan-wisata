@@ -87,6 +87,21 @@ session_start();
             </a>
           </li>
         </ul>
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="
+    position: fixed;
+    bottom: 0.1rem;
+    width: 234px;">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="act/logout.php" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
