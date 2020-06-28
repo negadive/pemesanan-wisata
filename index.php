@@ -166,9 +166,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div id="tabs-1">  <!-- Tabs container Starts -->
 									<section class="grida">
 										<section class="para-a">
-											<h4 id="wahana_name">One Person</h4>
-											<h5 id="wahana_price"> <span>$</span>65</h5>
-											<p id="wahana_desc">Fun as You LIke</p>
+											<?php
+											$wahanas = $con->query('SELECT * FROM wahana limit 1');
+											$data =  $wahanas->fetch_array(MYSQLI_ASSOC);
+											?>
+											<h4 id="wahana_name"><?php echo $data["nama"];?></h4>
+											<h5 id="wahana_price"> <span>Rp</span><?php echo $data["harga"];?></h5>
+											<p id="wahana_desc"><?php echo $data["deskripsi"];?></p>
 										</section>
 									</section>
 

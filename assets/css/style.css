@@ -54,7 +54,7 @@ width:100%;
 
 .logo img{
 position: absolute;
-bottom: -24%;
+bottom: -80%;
 left: 0%;
 width: 14%;
 display:block;
@@ -71,19 +71,19 @@ display:block;
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
     color: #fff;
-    background-color: rgba(97, 86, 241, 0.54);
+    background-color: rgb(186, 216, 10, 0.75);
 
 }
 
 .navbar-inverse .navbar-nav>li>a {
     border-radius: 15px 15px 0px 0px;
     color: #fff;
-    background: rgba(247, 34, 71, 0.75);
+    background: rgb(181, 168, 12, 0.75);
 	margin:0px 2px;
 }
 .navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
     color: #fff;
-    background-color: rgba(97, 86, 241, 0.54);
+    background-color: rgb(186, 216, 10, 0.75);
 }
 
 .navbar {
@@ -116,7 +116,7 @@ display:block;
 
 /* ----- About Starts ----*/
 .about{
-background:#3db2e6;
+background: #0f810f;
 }
 
 .about-padding-w3ls{
@@ -232,7 +232,7 @@ padding:250px 0px;
 padding-top: 40px;
 padding-bottom: 50px;
 text-align: center;
-color:rgba(97, 86, 241, 1);
+color:rgb(4, 156, 2);
 }
 
 .timings h5{
@@ -254,7 +254,7 @@ display: inline-block;
 
 /* -----info Starts-----*/
 .info{
-background:#3db2e6;
+background:#0f810f;
 }
 
 .info h2{
@@ -392,7 +392,7 @@ display: inline-block;
 #tabs4 li a {
 	display: block;
 	padding: 17px 30px;
-	background: rgba(247, 34, 71, 0.75);
+	background: rgb(181, 168, 12, 0.75);
 	text-decoration: none;
 	color: #fff;
 	border-radius: 4px;
@@ -405,7 +405,7 @@ display: inline-block;
 }
 
 .tabulous_active {
-	background: rgba(97, 86, 241, 0.54) !important;
+	background: rgb(186, 216, 10, 0.75) !important;
 	color: #fff !important;
 }
 
@@ -449,7 +449,7 @@ margin: 0px;
 padding: 0px;
 font-size: 60px;
 padding-bottom: 12px;
-color: rgba(97, 86, 241, 1);
+color: rgb(4, 156, 2);
 font-family: "Courgette-Regular";
 }
 
@@ -519,7 +519,7 @@ a.hover{
 	margin-top:10px;
     text-align: center;
 	font-size:26px;
-	color: rgba(97, 86, 241, 1);
+	color: rgb(4, 156, 2);
 }
 
 
@@ -683,7 +683,7 @@ a.hover{
 /* -- Gallery Starts ------*/
 
 .gallery{
-background:#3db2e6;
+background:#0f810f;
 }
 
 .gallery-padding{
@@ -712,7 +712,7 @@ padding:100px 0px;
 .simplefilter li{
 display:inline-block;
 padding: 17px 30px;
-background: rgba(247, 34, 71, 0.75);
+background: rgb(181, 168, 12, 0.75);
 color: #fff;
 border-radius: 4px;
 font-size: 16px;
@@ -721,7 +721,7 @@ cursor: pointer;
 
 .simplefilter li.active {
     color: #fff;
-    background: rgba(97, 86, 241, 0.54);
+    background: rgb(186, 216, 10, 0.75);
 }
 
 
@@ -887,7 +887,7 @@ margin: 0 auto 16px;
 
 .facts {
 border-radius: 10px;
-background:rgba(97, 86, 241, 0.8);
+background:rgb(84, 216, 168, 0.5);
 padding: 40px 32px;
 }
 
@@ -1072,7 +1072,7 @@ select {
 
 .date_btn input[type="submit"] {
     outline: none;
-	background: rgba(247, 34, 71, 0.75);
+	background: rgb(181, 168, 12, 0.75);
     font-size: 17px;
     color: #fff;
     padding: 10px 1em;
@@ -1125,7 +1125,7 @@ letter-spacing: 3px;
 }
 
 .contact span{
-color:rgba(97, 86, 241, 0.54);
+color:rgb(186, 216, 10, 0.75);
 display:block;
 padding-top:10px;
 }
@@ -1211,11 +1211,11 @@ color:#fff;
 
 .footer a{
 text-decoration:none;
-color:rgba(97, 86, 241, 0.54);
+color:rgb(186, 216, 10, 0.75);
 }
 
 .footer a:hover{
-color:rgba(247, 34, 71, 0.75);
+color:rgb(181, 168, 12, 0.75);
 }
 
 
@@ -1346,7 +1346,7 @@ color:rgba(247, 34, 71, 0.75);
 
 .logo img {
     position: absolute;
-    bottom: -23%;
+    bottom: -80%;
     left: -16%;
     width: 16%;
 }
