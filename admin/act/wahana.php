@@ -46,7 +46,7 @@
         $query = "UPDATE wahana SET nama='$nama', harga='$harga', deskripsi='$deskripsi' $query_gambar WHERE id=$id";
         $wahana = $con->query($query);
         if($wahana){
-            if($gambar["error"]!=0){
+            if(!$gambar["error"]){
                 $q = move_uploaded_file($file_tmp, $new_path);
             }
             $con->close();
