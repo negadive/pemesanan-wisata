@@ -27,9 +27,10 @@ CREATE TABLE `admin` (
   `username` varchar(12) NOT NULL,
   `password` varchar(100) NOT NULL,
   `name` varchar(45) NOT NULL,
+  `role` varchar(45) NOT NULL DEFAULT 'admin',
   PRIMARY KEY (`idadmin`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,7 +60,7 @@ CREATE TABLE `costumer` (
   `alamat` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +79,7 @@ CREATE TABLE `matchpw` (
   KEY `fk_matchpw_2_idx` (`paketwahana_id`),
   CONSTRAINT `fk_matchpw_1` FOREIGN KEY (`wahana_id`) REFERENCES `wahana` (`id`) ON DELETE CASCADE,
   CONSTRAINT `fk_matchpw_2` FOREIGN KEY (`paketwahana_id`) REFERENCES `paketwahana` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +96,7 @@ CREATE TABLE `paketwahana` (
   `deskripsi` varchar(200) DEFAULT NULL,
   `gambar` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,13 +112,15 @@ CREATE TABLE `transaksi` (
   `id_layanan` int NOT NULL,
   `jenis_layanan` varchar(2) NOT NULL,
   `tgl_transaksi` date DEFAULT NULL,
-  `tgl_pemesanan` date NOT NULL,
+  `tgl_pemesanan` datetime NOT NULL,
   `foto_bukti` varchar(255) DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '0',
   `total` float NOT NULL,
   `tgl_bayar` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  KEY `fk_transaksi_1_idx` (`id_costumer`),
+  CONSTRAINT `fk_transaksi_1` FOREIGN KEY (`id_costumer`) REFERENCES `costumer` (`id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +137,7 @@ CREATE TABLE `wahana` (
   `deskripsi` varchar(255) DEFAULT NULL,
   `gambar` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -146,4 +149,4 @@ CREATE TABLE `wahana` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-28 13:38:11
+-- Dump completed on 2020-08-08 13:49:58

@@ -4,13 +4,15 @@ class admin{
     public $username;
     public $name;
     public $password;
+    public $role;
 
     var $table_name = "admin";
 
-    function __construct($username, $password, $name){
+    function __construct($username, $password, $name, $role){
         $this->username = $username;
         $this->name = $name;
         $this->password = $password;
+        $this->role = $role;
     }
 
     function insert($con){
@@ -21,10 +23,10 @@ class admin{
     }
 
     public static function with_username($con, $username){
-        $query = $con->query("SELECT username, password, name FROM admin WHERE username='$username' limit 1");
+        $query = $con->query("SELECT username, password, name, role FROM admin WHERE username='$username' limit 1");
         if($query){
             $admin = $query->fetch_assoc();
-            $instance = new admin($admin["username"], $admin["password"], $admin["name"]);
+            $instance = new admin($admin["username"], $admin["password"], $admin["name"], $admin["role"]);
 
             return $instance;
         }
@@ -32,6 +34,3 @@ class admin{
     }
 
 }
-
-
-?>
